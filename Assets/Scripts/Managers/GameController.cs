@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 		set
 		{
 			instance.m_TimeScale = value;
+			Time.timeScale = value / 5;
 		}
 	}
 
@@ -120,14 +121,14 @@ public class GameController : MonoBehaviour
 	{
 		if ( instance.m_CurrentSpeedIndex >= instance.m_Speeds.Length - 1 ) return;
 		instance.m_CurrentSpeedIndex++;
-		instance.m_TimeScale = CurrentSpeed.timeScale;
+		TimeScale = CurrentSpeed.timeScale;
 	}
 
 	public static void DecreaseSpeed ()
 	{
 		if ( instance.m_CurrentSpeedIndex == 0 ) return;
 		instance.m_CurrentSpeedIndex--;
-		instance.m_TimeScale = CurrentSpeed.timeScale;
+		TimeScale = CurrentSpeed.timeScale;
 	}
 
 
@@ -135,7 +136,7 @@ public class GameController : MonoBehaviour
 
 	private void Start ()
 	{
-		m_TimeScale = CurrentSpeed.timeScale;
+		TimeScale = CurrentSpeed.timeScale;
 		UIManager.UpdateSpeedDisplay();
 	}
 
@@ -152,43 +153,43 @@ public class GameController : MonoBehaviour
 				m_LastSpeedIndex = m_CurrentSpeedIndex;
 				m_CurrentSpeedIndex = 0;
 			}
-			m_TimeScale = CurrentSpeed.timeScale;
+			TimeScale = CurrentSpeed.timeScale;
 			UIManager.UpdateSpeedDisplay();
 		}
 		if ( Input.GetKeyDown( KeyCode.Alpha1 ) )
 		{
 			m_CurrentSpeedIndex = 0;
-			m_TimeScale = CurrentSpeed.timeScale;
+			TimeScale = CurrentSpeed.timeScale;
 			UIManager.UpdateSpeedDisplay();
 		}
 		if ( Input.GetKeyDown( KeyCode.Alpha2 ) )
 		{
 			m_CurrentSpeedIndex = 1;
-			m_TimeScale = CurrentSpeed.timeScale;
+			TimeScale = CurrentSpeed.timeScale;
 			UIManager.UpdateSpeedDisplay();
 		}
 		if ( Input.GetKeyDown( KeyCode.Alpha3 ) )
 		{
 			m_CurrentSpeedIndex = 2;
-			m_TimeScale = CurrentSpeed.timeScale;
+			TimeScale = CurrentSpeed.timeScale;
 			UIManager.UpdateSpeedDisplay();
 		}
 		if ( Input.GetKeyDown( KeyCode.Alpha4 ) )
 		{
 			m_CurrentSpeedIndex = 3;
-			m_TimeScale = CurrentSpeed.timeScale;
+			TimeScale = CurrentSpeed.timeScale;
 			UIManager.UpdateSpeedDisplay();
 		}
 		if ( Input.GetKeyDown( KeyCode.Alpha5 ) )
 		{
 			m_CurrentSpeedIndex = 4;
-			m_TimeScale = CurrentSpeed.timeScale;
+			TimeScale = CurrentSpeed.timeScale;
 			UIManager.UpdateSpeedDisplay();
 		}
 		if ( Input.GetKeyDown( KeyCode.Alpha6 ) )
 		{
 			m_CurrentSpeedIndex = 5;
-			m_TimeScale = CurrentSpeed.timeScale;
+			TimeScale = CurrentSpeed.timeScale;
 			UIManager.UpdateSpeedDisplay();
 		}
 
