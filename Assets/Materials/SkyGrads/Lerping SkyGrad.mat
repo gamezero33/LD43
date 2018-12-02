@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Lerping SkyGrad
   m_Shader: {fileID: 4800000, guid: dc81d7c0be9976340bde70796a664530, type: 3}
-  m_ShaderKeywords: _SWITCH2_ON
+  m_ShaderKeywords: _SWITCH2_ON _SWITCH3_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -59,8 +59,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exponent1: 1
-    - _Exponent2: 1
+    - _Exponent1: 2.7
+    - _Exponent2: 2.2
     - _Exponent3: 1
     - _Exponent4: 20
     - _Exposure: 1.47
@@ -75,20 +75,20 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Switch2: 1
-    - _Switch3: 0
+    - _Switch3: 1
     - _Switch4: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.09274845, b: 0.43382353, a: 1}
+    - _BaseColor: {r: 0.32963884, g: 0.4443593, b: 0.6691177, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.12132353, g: 0.21754564, b: 0.375, a: 1}
+    - _Color1: {r: 0.28114182, g: 0.52469873, b: 0.5882352, a: 1}
     - _Color2: {r: 0.49264705, g: 0.4601704, b: 0.02173442, a: 1}
-    - _Color3: {r: 0.52205884, g: 0.29671577, b: 0.09212802, a: 1}
+    - _Color3: {r: 0.17647055, g: 0.0064878846, b: 0.16474769, a: 1}
     - _Color4: {r: 1, g: 0.8176472, b: 0.08823532, a: 1}
     - _Direction1: {r: 1, g: 1, b: 0, a: 0}
     - _Direction2: {r: 0.5, g: 1, b: 0, a: 0}
-    - _Direction3: {r: -0.3, g: -1, b: -0.2, a: 1}
+    - _Direction3: {r: -0.3, g: -1, b: -0.2, a: 0}
     - _Direction4: {r: 0, g: 1, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NormalizedVector1: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}

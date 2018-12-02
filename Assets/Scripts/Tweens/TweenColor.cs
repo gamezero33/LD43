@@ -72,7 +72,10 @@ public class TweenColor : Tweener
 		if ( m_SpriteRenderer )
 			m_SpriteRenderer.color = color;
 		if ( m_MeshRenderer && Application.isPlaying )
+		{
 			m_MeshRenderer.material.color = color;
+			m_MeshRenderer.material.SetColor( "_Color" , color );
+		}
 	}
 
 }

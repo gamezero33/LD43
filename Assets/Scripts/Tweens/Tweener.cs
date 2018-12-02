@@ -57,6 +57,7 @@ public class Tweener : MonoBehaviour
 
 	[SerializeField]
 	protected float m_Duration = 1.0f;
+	public float Duration { get { return m_Duration; } }
 
 	[SerializeField]
 	private AnimationCurve m_Curve = AnimationCurve.EaseInOut( 0.0f, 0.0f, 1.0f, 1.0f );
@@ -66,6 +67,9 @@ public class Tweener : MonoBehaviour
 
 	[SerializeField]
 	private bool m_RandomStartFactor;
+
+	[SerializeField, Range( 0.0f, 1.0f )]
+	private float m_StartFactor = 0;
 
 	[SerializeField]
 	private UnityEvent m_OnFinished;
@@ -81,6 +85,11 @@ public class Tweener : MonoBehaviour
 		{
 			return m_Curve.Evaluate( m_Factor );
 		}
+		set
+		{
+			m_Factor = value;
+			UpdateTween();
+		}
 	}
 
 	#endregion
@@ -90,6 +99,7 @@ public class Tweener : MonoBehaviour
 
 	private State m_State = State.Off;
 	private float m_Time = 0.0f;
+	public float NormalisedTime { get { return m_Time; } set { m_Time = value; UpdateTime(); } }
 
 	protected float m_RandomTime;
 
@@ -269,7 +279,14 @@ public class Tweener : MonoBehaviour
 		m_State = State.Idle;
 		if ( OnStarted != null )
 			OnStarted();
-		if ( m_RandomStartFactor ) StartCoroutine( RandomiseStart() );
+		if ( m_RandomStartFactor )
+		{
+			StartCoroutine( RandomiseStart() );
+		}
+		else
+		{
+			StartCoroutine( StartAtFactor() );
+		}
 	}
 
 	[RuntimeButton]
@@ -296,6 +313,12 @@ public class Tweener : MonoBehaviour
 		yield return new WaitUntil( () => m_State == State.Forward );
 		//m_Time = m_RandomTime;
 		m_Time = Random.Range( 0.0f, m_Duration );
+	}
+
+	private IEnumerator StartAtFactor ()
+	{
+		yield return new WaitUntil( () => m_State == State.Forward );
+		m_Time = m_Duration * m_StartFactor;
 	}
 
 	public void SetDuration ( float newDuration )

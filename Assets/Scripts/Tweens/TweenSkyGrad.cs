@@ -6,6 +6,12 @@ public class TweenSkyGrad : Tweener
 {
 
 	[SerializeField]
+	private float m_StartEnvIntensity = 1;
+
+	[SerializeField]
+	private float m_EndEnvIntensity = 1;
+
+	[SerializeField]
 	private Material m_StartSkyGrad;
 
 	[SerializeField]
@@ -30,6 +36,7 @@ public class TweenSkyGrad : Tweener
 		LerpVector( "_Direction1" );
 		LerpColor( "_Color1" );
 		LerpFloat( "_Exponent1" );
+		
 
 		if ( m_LerpingMaterial.GetFloat( "_Switch2" ) == 1 )
 		{
@@ -51,8 +58,20 @@ public class TweenSkyGrad : Tweener
 			LerpColor( "_Color4" );
 			LerpFloat( "_Exponent4" );
 		}
-
+	
 		RenderSettings.skybox = m_LerpingMaterial;
+		RenderSettings.ambientIntensity = Mathf.Lerp( m_StartEnvIntensity, m_EndEnvIntensity, Factor );
+		DynamicGI.UpdateEnvironment();
+
+		Vector3 d1 = m_LerpingMaterial.GetVector( "_Direction1" );
+		Vector3 d2 = m_LerpingMaterial.GetVector( "_Direction2" );
+		Vector3 d3 = m_LerpingMaterial.GetVector( "_Direction3" );
+		Vector3 d4 = m_LerpingMaterial.GetVector( "_Direction4" );
+		m_LerpingMaterial.SetVector( "_NormalizedVector1", d1.normalized );
+		m_LerpingMaterial.SetVector( "_NormalizedVector2", d2.normalized );
+		m_LerpingMaterial.SetVector( "_NormalizedVector3", d3.normalized );
+		m_LerpingMaterial.SetVector( "_NormalizedVector4", d4.normalized );
+
 	}
 
 	private void LerpColor ( string propertyLabel )
